@@ -25,6 +25,7 @@
             Acapela Group Remastered
         </h1>
     </div>
+	 <div class="bg-slate-200 md:mt-11 p-11 md:mx-auto h-2/4 md:w-3/5 md:rounded"><input type="text" id="searchBox" placeholder="search a voice...">
     <div class="bg-slate-200 md:mt-11 p-11 md:mx-auto h-2/4 md:w-3/5 md:rounded">
             <label for="audioselect" hidden="">audio to use</label>
             <select name="audioselect" id="audio_select" class="rounded p-1 bg-slate-100 mt-2 w-full sm:w-1/2">
@@ -146,8 +147,11 @@
 	<option value="Sanna">Sanna</option>
 	<option class="bold">Swedish Gothenburg</option>
 	<option value="Kal">Kal</option>
+	<option class="bold">English Scotland</option>
+	<option value="Rhona">Rhona</option>
 	</select>
   <button onclick="goToVoicePage()">Generate</button>
+  <button onclick="previewVoice()">Preview</button>
     </div>
 
     <div class="bg-red-200 md:mt-6 p-6 pt-3 md:mx-auto h-2/4 md:w-2/4 md:rounded" id="error" style="display: none">
@@ -165,7 +169,7 @@
       const voice = document.getElementById('voice').value;
 	  const audio = document.getElementById('audio_select').value;
       const text = encodeURIComponent(document.getElementById('text').value);
-      const url = `./index.html?msg=${text}&voice=${voice}&audio=${audio}`;
+      const url = `./?msg=${text}&voice=${voice}&audio=${audio}`;
       window.location.href = url;
     }
   </script>
@@ -186,11 +190,46 @@
             }
         })();
     </script>
+<script>
+    const searchBox = document.getElementById('searchBox');
+    const select = document.getElementById('voice');
+    const allOptions = Array.from(select.options); // Store all options
 
+    searchBox.addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase();
 
+        // Clear current options
+        select.innerHTML = '';
+
+        // Filter and add matching options
+        allOptions.forEach(option => {
+            if (option.text.toLowerCase().includes(searchTerm)) {
+                select.appendChild(option);
+            }
+        });
+
+        // If no match, show a disabled "No results" option
+        if (select.options.length === 0) {
+            const noResult = document.createElement('option');
+            noResult.text = 'No results found';
+            noResult.disabled = true;
+            select.appendChild(noResult);
+        }
+    });
+</script>
+  <script>
+    function previewVoice() {
+      const voice = document.getElementById('voice').value;
+	  const audio = document.getElementById('audio_select').value;
+      const url = `./?msg=Hello There! My Name Is ${voice}, I'm One Of The Acapela Voices&voice=${voice}&audio=${audio}`;
+      window.location.href = url;
+    }
+  </script>
 
 
 
 
 
 </body></html>
+
+
