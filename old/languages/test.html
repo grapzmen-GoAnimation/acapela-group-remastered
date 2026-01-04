@@ -1,0 +1,98 @@
+<html><head>
+  <meta charset="UTF-8">
+  <title>Acapela TTS Remastered</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    textarea { width: 100%; height: 100px; }
+    select, button { margin-top: 10px; padding: 8px; }
+</style>
+</head>
+<body>
+  <h2>acapela tts remastered: no background and you can download the speech you made!1!1!1</h2>
+
+  <label for="voice">choose a voice:</label>
+  <select id="voice">
+    <option value="Lily22k_HQ">Lily [OLD]</option>
+    <option value="Lily22k_NV">Lily [NEW]</option>
+    <option value="Taylor22k_HQ">Taylor [OLD]</option>
+    <option value="Taylor22k_NV">Taylor [NEW]</option>
+    <option value="Darius22k_HQ">Darius [OLD]</option>
+    <option value="Darius22k_NV">Darius [NEW]</option>
+    <option value="Karen22k_HQ">Karen [OLD]</option>
+    <option value="Karen22k_NV">Karen [NEW]</option>
+    <option value="Laura22k_HQ">Laura [OLD]</option>
+    <option value="Laura22k_NV">Laura [NEW]</option>
+    <option value="Micah22k_HQ">Micah [OLD]</option>
+    <option value="Micah22k_NV">Micah [NEW]</option>
+    <option value="Rod22k_HQ">Rod [OLD]</option>
+    <option value="Rod22k_NV">Rod [NEW]</option>
+    <option value="Ryan22k_HQ">Ryan [OLD]</option>
+    <option value="Ryan22k_NV">Ryan [NEW]</option>
+    <option value="Saul22k_HQ">Saul [OLD]</option>
+    <option value="Saul22k_NV">Saul [NEW]</option>
+    <option value="Sharon22k_HQ">Sharon [OLD]</option>
+    <option value="Sharon22k_NV">Sharon [NEW]</option>
+    <option value="Tamira22k_HQ">Tamira [OLD]</option>
+    <option value="Tamira22k_NV">Tamira [NEW]</option>
+    <option value="Tracy22k_HQ">Tracy [OLD]</option>
+    <option value="Tracy22k_NV">Tracy [NEW]</option>
+    <option value="Will22k_HQ">Will [OLD]</option>
+    <option value="Will22k_NV">Will [NEW]</option>
+    <option value="WillBadGuy22k_HQ">Will Bad Guy [OLD]</option>
+    <option value="WillBadGuy22k_NV">Will Bad Guy [NEW]</option>
+    <option value="WillFromAfar22k_HQ">Will From Afar [OLD]</option>
+    <option value="WillFromAfar22k_NV">Will From Afar [NEW]</option>
+    <option value="WillHappy22k_HQ">Will Happy [OLD]</option>
+    <option value="WillHappy22k_NV">Will Happy [NEW]</option>
+    <option value="WillLittleCreature22k_HQ">Will Little Creature [OLD]</option>
+    <option value="WillLittleCreature22k_NV">Will Little Creature [NEW]</option>
+    <option value="WillOldMan22k_HQ">Will Old Man [OLD]</option>
+    <option value="WillOldMan22k_NV">Will Old Man [NEW]</option>
+    <option value="WillSad22k_HQ">Will Sad [OLD]</option>
+    <option value="WillSad22k_NV">Will Sad [NEW]</option>
+    <option value="WillUpClose22k_HQ">Will Up Close [OLD]</option>
+    <option value="WillUpClose22k_NV">Will Up Close [NEW]</option>
+  </select>
+
+  <br><br>
+
+  <label for="text">enter your text:</label>
+  <textarea id="text" placeholder="type whatever you want like: the big chungus among us!"></textarea>
+
+  <br><br>
+
+  <button onclick="goToVoicePage()">speak</button>
+  
+<video controls="" autoplay="" name="media"><source id="voiceGenerate" src="" type="audio/mpeg"></video>
+  
+  <script>
+    function goToVoicePage() {
+      const voice = document.getElementById('voice').value;
+      const text = encodeURIComponent(document.getElementById('text').value);
+      const url = `./test.html?msg=${text}&voice=${voice}`;
+      window.location.href = url;
+    }
+  </script>
+  <script>
+        (function() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const text = params.get("msg");
+                const voiceId = params.get("voice");
+                const safeText = encodeURIComponent(text);
+                const safeVoiceId = encodeURIComponent(voiceId);
+                const embedUrl = `https://www.acapela-cloud.com/api/command/?voice=${safeVoiceId}&text=${safeText}&output=stream&type=mp3&samplerate=22050&token=bd8b22e3e5ebbaa05ea0055aec4e16c357c29486`; // replace http://speech.seediffusion.cc:7774 with another, note: you must know the site's api
+                document.getElementById("voiceGenerate").src = embedUrl;
+            } catch (err) {
+                console.error("Error loading", err);
+            }
+        })();
+    </script>
+
+
+
+
+
+
+
+</body></html>

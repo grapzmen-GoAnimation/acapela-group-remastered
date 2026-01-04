@@ -1,0 +1,91 @@
+<html><head>
+  <meta charset="UTF-8">
+  <title>Acapela TTS Remastered</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    textarea { width: 100%; height: 100px; }
+    select, button { margin-top: 10px; padding: 8px; }
+</style>
+</head>
+<body>
+  <h2>acapela tts remastered: no background and you can download the speech you made!1!1!1</h2>
+
+  <label for="voice">choose a voice:</label>
+  <select id="voice">
+    <option value="Anaisbtob22k_HQ">Anaisbtob [OLD]</option>
+    <option value="Anaisbtob22k_NV">Anaisbtob [NEW]</option>
+    <option value="Constance22k_HQ">Constance [OLD]</option>
+    <option value="Constance22k_NV">Constance [NEW]</option>
+    <option value="TaylorFrench22k_NT">Taylor French</option>
+    <option value="Alice22k_HQ">Alice [OLD]</option>
+    <option value="Alice22k_NV">Alice [NEW]</option>
+    <option value="Anais22k_HQ">Anais [OLD]</option>
+    <option value="Anais22k_NV">Anais [NEW]</option>
+    <option value="Antoine22k_HQ">Antoine [OLD]</option>
+    <option value="Antoine22k_NV">Antoine [NEW]</option>
+    <option value="AntoineFromAfar22k_HQ">Antoine From Afar [OLD]</option>
+    <option value="AntoineFromAfar22k_NV">Antoine From Afar [NEW]</option>
+    <option value="AntoineHappy22k_HQ">Antoine Happy [OLD]</option>
+    <option value="AntoineHappy22k_NV">Antoine Happy [NEW]</option>
+    <option value="AntoineSad22k_HQ">Antoine Sad [OLD]</option>
+    <option value="AntoineSad22k_NV">Antoine Sad [NEW]</option>
+    <option value="AntoineUpClose22k_HQ">Antoine Up Close [OLD]</option>
+    <option value="AntoineUpClose22k_NV">Antoine Up Close [NEW]</option>
+    <option value="Bruno22k_HQ">Bruno [OLD]</option>
+    <option value="Bruno22k_NV">Bruno [NEW]</option>
+    <option value="Claire22k_HQ">Claire [OLD]</option>
+    <option value="Claire22k_NV">Claire [NEW]</option>
+    <option value="Julie22k_HQ">Julie [OLD]</option>
+    <option value="Julie22k_NV">Julie [NEW]</option>
+    <option value="Manon22k_HQ">Manon [OLD]</option>
+    <option value="Manon22k_NV">Manon [NEW]</option>
+    <option value="Margaux22k_HQ">Margaux [OLD]</option>
+    <option value="Margaux22k_NV">Margaux [NEW]</option>
+    <option value="MargauxHappy22k_HQ">Margaux Happy [OLD]</option>
+    <option value="MargauxHappy22k_NV">Margaux Happy [NEW]</option>
+    <option value="MargauxSad22k_HQ">Margaux Sad [OLD]</option>
+    <option value="MargauxSad22k_NV">Margaux Sad [NEW]</option>
+  </select>
+
+  <br><br>
+
+  <label for="text">enter your text:</label>
+  <textarea id="text" placeholder="type whatever you want like: the big chungus among us!"></textarea>
+
+  <br><br>
+
+  <button onclick="goToVoicePage()">speak</button>
+  
+<video controls="" autoplay="" name="media"><source id="voiceGenerate" src="" type="audio/mpeg"></video>
+  
+  <script>
+    function goToVoicePage() {
+      const voice = document.getElementById('voice').value;
+      const text = encodeURIComponent(document.getElementById('text').value);
+      const url = `./french-france.html?msg=${text}&voice=${voice}`; // come on work
+      window.location.href = url;
+    }
+  </script>
+  <script>
+        (function() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const text = params.get("msg");
+                const voiceId = params.get("voice");
+                const safeText = encodeURIComponent(text);
+                const safeVoiceId = encodeURIComponent(voiceId);
+                const embedUrl = `https://www.acapela-cloud.com/api/command/?voice=${safeVoiceId}&text=${safeText}&output=stream&type=mp3&samplerate=22050&token=bd8b22e3e5ebbaa05ea0055aec4e16c357c29486`; // replace http://speech.seediffusion.cc:7774 with another, note: you must know the site's api
+                document.getElementById("voiceGenerate").src = embedUrl;
+            } catch (err) {
+                console.error("Error loading", err);
+            }
+        })();
+    </script>
+
+
+
+
+
+
+
+</body></html>
